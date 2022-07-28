@@ -1,3 +1,5 @@
+import email
+from django.forms import CharField
 from django.utils.text import slugify
 from unicodedata import name
 from django.db import models
@@ -33,3 +35,11 @@ class Category(models.Model):
 
     def  __str__(self) -> str:
         return self.name
+
+class Apply(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254)
+    website = models.URLField()
+    uplode_cv = models.FileField(upload_to='apply')
+    coverletter = models.TextField(max_length=300)
