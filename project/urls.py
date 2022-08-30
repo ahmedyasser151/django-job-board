@@ -18,5 +18,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jobs/', include('job.urls', namespace='jobs')),
+    path('blog/', include('blog.urls', )),
+    path('jobs/', include('job.urls', )),
 ]
+
+#Add Django site authentication urls (for login, logout, password management)
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+
+
